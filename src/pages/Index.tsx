@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { GameHeader } from "@/components/GameHeader";
 import { FeatureCard } from "@/components/FeatureCard";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ const Index = () => {
   const [coins] = useState(250);
   const [gold] = useState(30);
   const [showTutorial, setShowTutorial] = useState(true);
+  const navigate = useNavigate();
 
   const handleStartGame = () => {
     setShowTutorial(false);
@@ -15,6 +17,10 @@ const Index = () => {
 
   const handleSkipTutorial = () => {
     setShowTutorial(false);
+  };
+
+  const handleStartNow = () => {
+    navigate("/game");
   };
 
   return (
@@ -28,9 +34,12 @@ const Index = () => {
             {showTutorial ? (
               <div className="text-center space-y-6 animate-slide-up">
                 <div className="text-6xl animate-bounce-in">🎮</div>
-                <h2 className="text-3xl font-bold text-foreground">Welcome to Healthy Plate</h2>
+                <h2 className="text-3xl font-bold text-foreground">
+                  Welcome to Healthy Plate
+                </h2>
                 <p className="text-lg text-muted-foreground">
-                  Let me show you how to play! Touch the plate, drag the food, and have fun learning! 🍽️
+                  Let me show you how to play! Touch the plate, drag the food,
+                  and have fun learning! 🍽️
                 </p>
                 <div className="flex gap-4 justify-center">
                   <Button
@@ -51,12 +60,14 @@ const Index = () => {
             ) : (
               <div className="text-center space-y-6">
                 <div className="text-6xl animate-float">🎯</div>
-                <h2 className="text-3xl font-bold text-foreground">Ready to Play!</h2>
+                <h2 className="text-3xl font-bold text-foreground">
+                  Ready to Play!
+                </h2>
                 <p className="text-lg text-muted-foreground">
                   Choose a game mode below to continue your adventure!
                 </p>
                 <Button
-                  onClick={() => window.location.href = '/game'}
+                  onClick={handleStartNow}
                   size="lg"
                   className="bg-gradient-success text-primary-foreground shadow-soft hover:shadow-glow transition-all text-xl px-8 py-6 mt-4"
                 >
@@ -64,7 +75,9 @@ const Index = () => {
                 </Button>
                 <div className="flex items-center justify-center gap-2 mt-4">
                   <div className="w-3 h-3 rounded-full bg-success animate-pulse" />
-                  <span className="text-sm text-muted-foreground">Last saved: Level 12</span>
+                  <span className="text-sm text-muted-foreground">
+                    Last saved: Level 12
+                  </span>
                 </div>
               </div>
             )}
@@ -80,7 +93,7 @@ const Index = () => {
             description="Explore 10 countries with unique foods! 🌍"
             path="/world-map"
           />
-          
+
           <FeatureCard
             title="Level Progression"
             icon={<TrendingUp className="w-8 h-8 text-success" />}
@@ -88,7 +101,7 @@ const Index = () => {
             description="60 levels from Beginner to Advanced! 🎯"
             path="/levels"
           />
-          
+
           <FeatureCard
             title="Recipe Book Store"
             icon={<BookOpen className="w-8 h-8 text-accent" />}
@@ -96,7 +109,7 @@ const Index = () => {
             description="30+ Fruits, Veggies & International Foods! 🍎"
             path="/recipe-book"
           />
-          
+
           <FeatureCard
             title="Challenges & Extras"
             icon={<Trophy className="w-8 h-8 text-pink" />}
@@ -109,8 +122,12 @@ const Index = () => {
         {/* Progress Indicator */}
         <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-2 bg-card rounded-full px-6 py-3 shadow-card">
-            <span className="text-sm font-medium text-muted-foreground">Current Title:</span>
-            <span className="text-lg font-bold text-primary">Food Explorer 🌟</span>
+            <span className="text-sm font-medium text-muted-foreground">
+              Current Title:
+            </span>
+            <span className="text-lg font-bold text-primary">
+              Food Explorer 🌟
+            </span>
           </div>
         </div>
       </main>
