@@ -35,7 +35,7 @@ const Index = () => {
               <div className="text-center space-y-6 animate-slide-up">
                 <div className="text-6xl animate-bounce-in">🎮</div>
                 <h2 className="text-3xl font-bold text-foreground">
-                  Welcome to Healthy Plate ankit
+                  Welcome to Healthy Plate
                 </h2>
                 <p className="text-lg text-muted-foreground">
                   Let me show you how to play! Touch the plate, drag the food,
